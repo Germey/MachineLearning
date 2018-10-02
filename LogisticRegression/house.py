@@ -1,4 +1,4 @@
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LogisticRegression
 
 x_data = [
     [6000, 58],
@@ -7,13 +7,12 @@ x_data = [
     [15000, 54]
 ]
 y_data = [
-    30000, 55010, 73542, 63201
+    0, 0, 1, 1
 ]
 
-lr = LinearRegression()
+lr = LogisticRegression()
 lr.fit(x_data, y_data)
-print('方程为 y={w1}x1+{w2}x2+{b}'.format(w1=round(lr.coef_[0], 2),
-                                       w2=round(lr.coef_[1], 2),
-                                       b=lr.intercept_))
 x_test = [[12000, 60]]
-print('住房面积为', lr.predict(x_test)[0])
+print('Intercept', lr.intercept_)
+print('Coef', lr.coef_)
+print('款项是否可以立即到账', lr.predict(x_test)[0])
